@@ -2,29 +2,13 @@ import {css} from 'styled-components';
 
 import layout from './theme/layout';
 import typography from './theme/typography';
-import dc from './utils/dc';
 import fontSize from './utils/fontSize';
 import lockPadding from './utils/lockPadding';
 import maxWidth from './utils/maxWidth';
 import md from './utils/md';
 import rem from './utils/rem';
 
-const headerHeight = dc(layout.header.pc, layout.header.mobile);
-const headerStickyHeight = dc(
-   layout.header.stickyPc,
-   layout.header.stickyMobile,
-);
-
 const CoreStyles = css`
-   :root {
-      --headerH: ${headerHeight};
-      --headerSH: ${headerStickyHeight};
-   }
-
-   :target {
-      scroll-margin-top: var(--headerH);
-   }
-
    :focus,
    :focus-visible {
       outline-color: ${props => props.theme.palette[4]};
@@ -69,12 +53,6 @@ const CoreStyles = css`
          max-width: none;
          padding: 0 ${rem(12)};
       }
-   }
-
-   // *:not(.keep-anim) (Включить при надобности)
-   body.resize * {
-      animation: none !important;
-      transition: none !important;
    }
 `;
 export default CoreStyles;
