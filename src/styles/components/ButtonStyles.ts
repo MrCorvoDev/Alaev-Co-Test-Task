@@ -4,6 +4,9 @@ import em from '../utils/em';
 import rem from '../utils/rem';
 
 const ButtonStyles = css`
+   display: inline-flex;
+   justify-content: center;
+   align-items: center;
    min-height: ${em(64)};
    padding: ${em(8)} ${em(20)};
    border-radius: ${rem(5)};
