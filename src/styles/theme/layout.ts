@@ -16,12 +16,6 @@ const layout = {
    breakpoints,
    designWidth: 1440,
    minWidth: 320,
-   header: {
-      pc: 80,
-      mobile: 50,
-      stickyPc: 50,
-      stickyMobile: 40,
-   },
 };
 
 export default layout;

@@ -5,7 +5,7 @@ const SIZES = {
 };
 
 const FONTS = {
-   family1: 'Unbounded, serif',
+   family1: 'Arial, sans-serif',
 };
 
 const typography = {

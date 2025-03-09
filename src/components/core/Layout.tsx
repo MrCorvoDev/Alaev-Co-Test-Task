@@ -1,5 +1,5 @@
 import useScrollService from '../../hooks/useScrollService';
-import Header from '../Header';
+import Header from '../header/Header';
 import RouterLazyLoader from '../loading/RouterLazyLoader';
 
 const Layout = () => {
