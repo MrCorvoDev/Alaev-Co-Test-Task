@@ -1,6 +1,6 @@
-const jsonServer = require("json-server");
+import jsonServer from "json-server";
 const server = jsonServer.create();
-const router = jsonServer.router("db.json");
+const router = jsonServer.router("data/db.json");
 const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
@@ -68,4 +68,4 @@ server.delete("/logout", (req, res) => {
 });
 
 server.use(router);
-server.listen(5000, () => console.log("Mock API running on port 5000"));
+server.listen(3500, () => console.log("Mock API running on port 3500"));
