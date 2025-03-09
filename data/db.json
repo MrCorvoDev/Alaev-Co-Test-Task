@@ -68,5 +68,7 @@
          "quote": "The only source of knowledge is experience."
       }
    ],
-   "info": "Some information about the <b>company</b>."
+   "info": {
+      "info": "Some information about the <b>company</b>."
+   }
 }

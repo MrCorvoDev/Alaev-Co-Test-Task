@@ -26,7 +26,7 @@ interface Info {
    info: string;
 }
 
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'http://localhost:3500';
 
 const api = axios.create({
    baseURL: BASE_URL,
