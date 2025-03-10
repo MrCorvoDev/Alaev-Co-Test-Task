@@ -8,6 +8,7 @@ import Container from '../components/core/Container';
 import Image from '../components/core/Image';
 import Section from '../components/core/Section';
 import Button from '../components/form/Button';
+import Quote from '../components/Quote';
 import QuoteModal from '../components/QuoteModal';
 import useAuth from '../hooks/useAuth';
 import layout from '../styles/theme/layout';
@@ -83,6 +84,7 @@ const Profile = () => {
                   />
                </HeaderText>
             </Header>
+            {author && quote && <Quote author={author} quote={quote} />}
          </Container>
       </Section>
    );
