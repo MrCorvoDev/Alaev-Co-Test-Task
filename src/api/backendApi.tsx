@@ -1,4 +1,4 @@
-import axios, {AxiosResponse} from 'axios';
+import axios, {AxiosError, AxiosResponse} from 'axios';
 
 // User type
 interface User {
@@ -26,6 +26,13 @@ interface Info {
    info: string;
 }
 
+interface FailedResponse {
+   success: boolean;
+   data: {
+      message?: string;
+   };
+}
+
 const BASE_URL = 'http://localhost:3500';
 
 const api = axios.create({
@@ -41,11 +48,21 @@ const handleRequest = async <T,>(
    } catch (error) {
       console.error(error);
 
-      if (error instanceof Error) {
-         throw new Error(error.message);
-      } else {
-         throw new Error(String(error));
+      if (axios.isAxiosError<FailedResponse>(error)) {
+         const serverMessage = error.response?.data?.data?.message;
+
+         const modifiedError = new AxiosError(
+            serverMessage ?? error.message,
+            error.code,
+            error.config,
+            error.request,
+            error.response,
+         );
+
+         throw modifiedError;
       }
+
+      throw error instanceof Error ? error : new Error(String(error));
    }
 };
 
