@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import styled from 'styled-components';
 import useSWR from 'swr';
 
@@ -7,6 +8,7 @@ import Container from '../components/core/Container';
 import Image from '../components/core/Image';
 import Section from '../components/core/Section';
 import Button from '../components/form/Button';
+import QuoteModal from '../components/QuoteModal';
 import useAuth from '../hooks/useAuth';
 import layout from '../styles/theme/layout';
 import em from '../styles/utils/em';
@@ -55,6 +57,12 @@ const Profile = () => {
       suspense: true,
    }).data;
 
+   const [isModalOpen, setIsModalOpen] = useState(false);
+   const [author, setAuthor] = useState('');
+   const [quote, setQuote] = useState('');
+
+   const openModal = () => setIsModalOpen(true);
+
    return (
       <Section>
          <Container>
@@ -64,7 +72,15 @@ const Profile = () => {
                </Avatar>
                <HeaderText>
                   <Title>Welcome, {profile.fullname.split(' ')[0]}!</Title>
-                  <UpdateButton type='button'>Update</UpdateButton>
+                  <UpdateButton type='button' onClick={openModal}>
+                     Update
+                  </UpdateButton>
+                  <QuoteModal
+                     isOpen={isModalOpen}
+                     setIsOpen={setIsModalOpen}
+                     setAuthor={setAuthor}
+                     setQuote={setQuote}
+                  />
                </HeaderText>
             </Header>
          </Container>

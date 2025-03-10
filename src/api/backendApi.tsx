@@ -67,11 +67,17 @@ export const getInfo = async () => handleRequest<Info>(api.get('/info'));
 export const getProfile = async (token: string) =>
    handleRequest<User>(api.get(`/profile?token=${token}`));
 
-export const getAuthor = async (token: string) =>
-   handleRequest<Author>(api.get(`/author?token=${token}`));
+export const getAuthor = async (token: string, signal: AbortSignal) =>
+   handleRequest<Author>(api.get(`/author?token=${token}`, {signal}));
 
-export const getQuote = async (token: string, authorId: number) =>
-   handleRequest<Quote>(api.get(`/quote?token=${token}&authorId=${authorId}`));
+export const getQuote = async (
+   token: string,
+   authorId: number,
+   signal: AbortSignal,
+) =>
+   handleRequest<Quote>(
+      api.get(`/quote?token=${token}&authorId=${authorId}`, {signal}),
+   );
 
 export const login = async (email: string, password: string) =>
    handleRequest<{token: string}>(api.post('/login', {email, password}));
