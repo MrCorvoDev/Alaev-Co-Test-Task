@@ -1,5 +1,10 @@
 import {ComponentProps} from 'react';
-import {FieldError, useFormContext} from 'react-hook-form';
+import {
+   FieldError,
+   FieldValues,
+   RegisterOptions,
+   useFormContext,
+} from 'react-hook-form';
 import styled from 'styled-components';
 
 import em from '../../styles/utils/em';
@@ -23,12 +28,14 @@ interface InputProps extends ComponentProps<'input'> {
    name?: string;
    placeholder?: string | undefined;
    required?: boolean;
+   options?: RegisterOptions<FieldValues, string>;
    forceNoReactHookForm?: boolean;
 }
 const Input = ({
    name,
    placeholder,
    required = true,
+   options = {},
    forceNoReactHookForm = false,
    ...props
 }: InputProps) => {
@@ -39,7 +46,7 @@ const Input = ({
 
    const formProps = name
       ? !forceNoReactHookForm && register
-         ? {...register?.(name, {required})}
+         ? {...register?.(name, {required, ...options})}
          : {name}
       : {};
 

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import {logout} from '../../api/backendApi';
+import useAuth from '../../hooks/useAuth';
 import em from '../../styles/utils/em';
 import Container from '../core/Container';
 import Button from '../form/Button';
@@ -16,8 +17,12 @@ const Nav = styled.nav`
 `;
 
 const Header = () => {
-   // const token = useToken();
-   const token = null; // Temp
+   const {token, setToken} = useAuth();
+
+   const signOut = async (token: string) => {
+      await logout(token);
+      setToken(null);
+   };
 
    return (
       <HeaderEl>
@@ -28,7 +33,7 @@ const Header = () => {
                {token ? (
                   <>
                      <HeaderLink to='/profile'>Profile</HeaderLink>
-                     <Button type='button' onClick={() => void logout(token)}>
+                     <Button type='button' onClick={() => void signOut(token)}>
                         Sign Out
                      </Button>
                   </>

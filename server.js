@@ -13,11 +13,21 @@ const generateResponse = (success, data) => {
    return {success, data}
 };
 
+const getInfo = () => router.db.get("info").value();
 const getUsers = () => router.db.get("users").value();
 const getAuthors = () => router.db.get("authors").value();
 const getQuotes = () => router.db.get("quotes").value();
 
 const findUserByToken = (token) => getUsers().find((user) => user.token === token);
+
+// About
+server.get("/info", async (req, res) => {
+   const about = getInfo();
+
+   about
+      ? res.json(generateResponse(true, about))
+      : res.status(404).json(generateResponse(false, {message: "No content found."}));
+});
 
 // Authentication
 server.post("/login", (req, res) => {

@@ -12,7 +12,7 @@ const CoreStyles = css`
    :focus,
    :focus-visible {
       outline-color: ${props => props.theme.palette[4]};
-      outline-offset: ${rem(5)};
+      outline-offset: ${rem(1)};
    }
 
    body {
