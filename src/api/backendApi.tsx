@@ -67,18 +67,16 @@ const handleRequest = async <T,>(
 export const getInfo = async () => handleRequest<Info>(api.get('/info'));
 
 export const getProfile = async (token: string) =>
-   handleRequest<User>(api.get(`/profile?token=[${token}]`));
+   handleRequest<User>(api.get(`/profile?token=${token}`));
 
 export const getAuthor = async (token: string) =>
-   handleRequest<Author>(api.get(`/author?token=[${token}]`));
+   handleRequest<Author>(api.get(`/author?token=${token}`));
 
 export const getQuote = async (token: string, authorId: number) =>
-   handleRequest<Quote>(
-      api.get(`/quote?token=[${token}]&authorId=[${authorId}]`),
-   );
+   handleRequest<Quote>(api.get(`/quote?token=${token}&authorId=${authorId}`));
 
 export const login = async (email: string, password: string) =>
    handleRequest<{token: string}>(api.post('/login', {email, password}));
 
 export const logout = async (token: string) =>
-   handleRequest<object>(api.delete(`/profile?token=[${token}]`));
+   handleRequest<object>(api.delete(`/logout?token=${token}`));
