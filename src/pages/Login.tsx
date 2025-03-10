@@ -51,7 +51,7 @@ const Login = () => {
 
          setToken(data.token);
 
-         await navigate('/');
+         await navigate('/profile');
       } catch (error) {
          if (error instanceof Error)
             methods.setError('root', {message: error.message});

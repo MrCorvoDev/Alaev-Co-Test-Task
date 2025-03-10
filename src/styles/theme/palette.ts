@@ -16,6 +16,7 @@ const palette = {
    2: BASE.dark,
    3: BASE.light,
    4: BASE.white,
+   accent: '#282C6B',
    base: BASE,
    helpers: HELPERS,
 };
