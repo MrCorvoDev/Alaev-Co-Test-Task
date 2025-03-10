@@ -49,9 +49,9 @@ const UpdateButton = styled(Button)`
    background: ${props => props.theme.palette.accent};
 `;
 
-const About = () => {
+const Profile = () => {
    const {token} = useAuth();
-   const profile = useSWR('about', async () => await getProfile(token!), {
+   const profile = useSWR('profile', async () => await getProfile(token!), {
       suspense: true,
    }).data;
 
@@ -71,4 +71,4 @@ const About = () => {
       </Section>
    );
 };
-export default About;
+export default Profile;
