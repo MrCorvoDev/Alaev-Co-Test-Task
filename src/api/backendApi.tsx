@@ -3,9 +3,7 @@ import axios, {AxiosError, AxiosResponse} from 'axios';
 // User type
 interface User {
    email: string;
-   password: string;
    fullname: string;
-   token: string;
 }
 
 // Author type
