@@ -8,6 +8,7 @@ import Section from '../components/core/Section';
 import Button from '../components/form/Button';
 import Input from '../components/form/Input';
 import Label from '../components/form/Label';
+import LoginTip from '../components/LoginTip';
 import useAuth from '../hooks/useAuth';
 import em from '../styles/utils/em';
 import rem from '../styles/utils/rem';
@@ -105,6 +106,9 @@ const Login = () => {
                   )}
                </Form>
             </FormProvider>
+            <br />
+            <br />
+            <LoginTip />
          </Container>
       </Section>
    );
