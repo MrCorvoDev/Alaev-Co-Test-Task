@@ -26,11 +26,9 @@ interface Info {
    info: string;
 }
 
-interface FailedResponse {
+interface APIResponse<T> {
    success: boolean;
-   data: {
-      message?: string;
-   };
+   data: T;
 }
 
 const BASE_URL = 'http://localhost:3500';
@@ -40,15 +38,15 @@ const api = axios.create({
 });
 
 const handleRequest = async <T,>(
-   rq: Promise<AxiosResponse<T, unknown>>,
+   rq: Promise<AxiosResponse<APIResponse<T>, unknown>>,
 ): Promise<T> => {
    try {
       const response = await rq;
-      return response.data;
+      return response.data.data;
    } catch (error) {
       console.error(error);
 
-      if (axios.isAxiosError<FailedResponse>(error)) {
+      if (axios.isAxiosError<APIResponse<{message: string}>>(error)) {
          const serverMessage = error.response?.data?.data?.message;
 
          const modifiedError = new AxiosError(
