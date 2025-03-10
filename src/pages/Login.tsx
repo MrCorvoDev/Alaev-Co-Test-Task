@@ -1,5 +1,3 @@
-import axios from 'axios';
-import {useState} from 'react';
 import {FormProvider, SubmitHandler, useForm} from 'react-hook-form';
 import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
@@ -10,6 +8,7 @@ import Section from '../components/core/Section';
 import Button from '../components/form/Button';
 import Input from '../components/form/Input';
 import Label from '../components/form/Label';
+import useAuth from '../hooks/useAuth';
 import em from '../styles/utils/em';
 import rem from '../styles/utils/rem';
 
@@ -42,15 +41,14 @@ interface Inputs {
 const Login = () => {
    const navigate = useNavigate();
    const methods = useForm<Inputs>();
+   const {setToken} = useAuth();
 
    const onSubmit: SubmitHandler<Inputs> = async data => {
-      console.log(data);
-
       const {email, password} = data;
       try {
-         const token = await login(email, password);
+         const data = await login(email, password);
 
-         console.log(token);
+         setToken(data.token);
 
          await navigate('/');
       } catch (error) {
