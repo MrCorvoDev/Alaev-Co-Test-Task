@@ -94,7 +94,7 @@ const QuoteModal = ({
                <li>Step 2: Requesting quote.. {getStatus(isQuoteLoading)}</li>
             </Steps>
             <CancelButton type='button' onClick={handleCancel}>
-               Close
+               Cancel
             </CancelButton>
          </QuoteBody>
       </Modal>
